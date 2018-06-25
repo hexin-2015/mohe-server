@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GoldDao">
+
+	<update id="addGold">
+		update user 
+		<trim prefix="set" suffixOverrides=","> 
+			<if test="num!=0">gold=gold+#{num},</if>
+		</trim>
+		where
+		 openid=#{openid}
+		 
+	</update>
+	
+	<insert id="insertLog"  parameterType="com.game.entity.LogGold">
+		insert into log_gold(
+		openid,reason,oldNum,newNum,`change`,time
+		) values(
+		 	#{openid},#{reason},#{oldNum},#{newNum},#{change},#{time}
+		 )
+	</insert>
+	
+</mapper>

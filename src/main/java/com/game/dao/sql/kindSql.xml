@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.KindDao">
+
+	<insert id="insertPlant" parameterType="KindEntity">
+	 	<selectKey keyProperty="id" resultType="java.lang.Integer">  
+            select LAST_INSERT_ID()  
+        </selectKey>  
+		insert into kind_plant(
+			id,name,image_min_score,image_num,image_ids
+		) values (
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 )
+	</insert>
+	
+	<select id="getPlant" parameterType="KindEntity" resultType="KindEntity">
+		select * from kind_plant 
+		<where>	 
+			<if test="id != null and id != 0">
+				and id=#{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+		 </where>
+	</select >
+	
+	<update id="updatePlant"  parameterType="KindEntity">
+		 UPDATE kind_plant
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
+		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		 </trim>
+		 WHERE id=#{id}
+	</update>
+	
+	<insert id="insertAnimal" parameterType="KindEntity">
+	 	<selectKey keyProperty="id" resultType="java.lang.Integer">  
+            select LAST_INSERT_ID()  
+        </selectKey>  
+		insert into kind_animal(
+			id,name,image_min_score,image_num,image_ids
+		) values (
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 )
+	</insert>
+	
+	<select id="getAnimal" parameterType="KindEntity" resultType="KindEntity">
+		select * from kind_animal 
+		<where>	 
+			<if test="id != null and id != 0">
+				and id=#{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+		 </where>
+	</select >
+	
+	<update id="updateAnimal"  parameterType="KindEntity">
+		 UPDATE kind_animal
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
+		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		 </trim>
+		 WHERE id=#{id}
+	</update>
+	
+	<insert id="insertCar" parameterType="KindEntity">
+	 	<selectKey keyProperty="id" resultType="java.lang.Integer">  
+            select LAST_INSERT_ID()  
+        </selectKey>  
+		insert into kind_car(
+			id,name,image_min_score,image_num,image_ids
+		) values (
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 )
+	</insert>
+	
+	<select id="getCar" parameterType="KindEntity" resultType="KindEntity">
+		select * from kind_car 
+		<where>	 
+			<if test="id != null and id != 0">
+				and id=#{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+		 </where>
+	</select >
+	
+	<update id="updateCar"  parameterType="KindEntity">
+		 UPDATE kind_car
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
+		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		 </trim>
+		 WHERE id=#{id}
+	</update>
+	
+	<insert id="insertDish" parameterType="KindEntity">
+	 	<selectKey keyProperty="id" resultType="java.lang.Integer">  
+            select LAST_INSERT_ID()  
+        </selectKey>  
+		insert into kind_dish(
+			id,name,image_min_score,image_num,image_ids
+		) values (
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 )
+	</insert>
+	
+	<select id="getDish" parameterType="KindEntity" resultType="KindEntity">
+		select * from kind_dish 
+		<where>	 
+			<if test="id != null and id != 0">
+				and id=#{id}
+			</if>
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+		 </where>
+	</select >
+	
+	<update id="updateDish"  parameterType="KindEntity">
+		 UPDATE kind_dish
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
+		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		 </trim>
+		 WHERE id=#{id}
+	</update>
+	
+	
+	
+	
+	
+	
+</mapper>

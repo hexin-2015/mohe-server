@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.CommentDao">
+
+	<insert id="insertPlant" parameterType="CommentEntity">
+		insert into comment_plant(
+		openid,content,score,plant_id
+		) values(
+		 	 #{openid},#{content},#{score},#{kind_id}
+		 )
+	</insert>
+	
+	<update id="updatePlant" parameterType="CommentEntity">
+		 UPDATE comment_plant
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="content!=null">content=#{content},</if>
+		  <if test="score!=0">score=score+1,</if>
+		 </trim>
+		 WHERE id=#{id} and openid=#{openid}
+	</update>
+	
+	<select id="getPlant" parameterType="CommentEntity" resultType="CommentEntity">
+		select * from comment_plant where id=#{id}
+	</select>
+	
+	<select id="getListPlant" parameterType="CommentEntity" resultType="CommentEntity">
+		select A.*,B.nickName,B.avatarUrl from
+			(select * from comment_plant where plant_id = #{kind_id}) as A,
+			user as B
+		where A.openid=B.openid order by A.score desc
+	</select>
+	
+	<select id="getUserInfoPlant" parameterType="java.lang.Integer" resultType="CommentEntity">
+		select A.id,A.content,B.nickName,B.avatarUrl from
+			(select * from comment_plant where id = #{id}) as A,
+			user as B
+		where A.openid=B.openid
+	</select>
+	<!-- comment_animal -->
+	<insert id="insertAnimal" parameterType="CommentEntity">
+		insert into comment_animal(
+		openid,content,score,kind_id
+		) values(
+		 	 #{openid},#{content},#{score},#{kind_id}
+		 )
+	</insert>
+	
+	<update id="updateAnimal" parameterType="CommentEntity">
+		 UPDATE comment_animal
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="content!=null">content=#{content},</if>
+		  <if test="score!=0">score=score+1,</if>
+		 </trim>
+		 WHERE id=#{id} and openid=#{openid}
+	</update>
+	
+	<select id="getAnimal" parameterType="CommentEntity" resultType="CommentEntity">
+		select * from comment_animal where id=#{id}
+	</select>
+	
+	<select id="getListAnimal" parameterType="CommentEntity" resultType="CommentEntity">
+		select A.*,B.nickName,B.avatarUrl from
+			(select * from comment_animal where kind_id = #{kind_id}) as A,
+			user as B
+		where A.openid=B.openid order by A.score desc
+	</select>
+	
+	<select id="getUserInfoAnimal" parameterType="java.lang.Integer" resultType="CommentEntity">
+		select A.id,A.content,B.nickName,B.avatarUrl from
+			(select * from comment_animal where id = #{id}) as A,
+			user as B
+		where A.openid=B.openid
+	</select>
+	<!-- comment_car -->
+	<insert id="insertCar" parameterType="CommentEntity">
+		insert into comment_car(
+		openid,content,score,kind_id
+		) values (
+		 	 #{openid},#{content},#{score},#{kind_id}
+		 )
+	</insert>
+	
+	<update id="updateCar" parameterType="CommentEntity">
+		 UPDATE comment_car
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="content!=null">content=#{content},</if>
+		  <if test="score!=0">score=score+1,</if>
+		 </trim>
+		 WHERE id=#{id} and openid=#{openid}
+	</update>
+	
+	<select id="getCar" parameterType="CommentEntity" resultType="CommentEntity">
+		select * from comment_car where id=#{id}
+	</select>
+	
+	<select id="getListCar" parameterType="CommentEntity" resultType="CommentEntity">
+		select A.*,B.nickName,B.avatarUrl from
+			(select * from comment_car where kind_id = #{kind_id}) as A,
+			user as B
+		where A.openid=B.openid order by A.score desc
+	</select>
+	
+	<select id="getUserInfoCar" parameterType="java.lang.Integer" resultType="CommentEntity">
+		select A.id,A.content,B.nickName,B.avatarUrl from
+			(select * from comment_car where id = #{id}) as A,
+			user as B
+		where A.openid=B.openid
+	</select>
+	<!-- comment_dish -->
+	<insert id="insertDish" parameterType="CommentEntity">
+		insert into comment_dish(
+		openid,content,score,kind_id
+		) values (
+		 	 #{openid},#{content},#{score},#{kind_id}
+		 )
+	</insert>
+	
+	<update id="updateDish" parameterType="CommentEntity">
+		 UPDATE comment_dish
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="content!=null">content=#{content},</if>
+		  <if test="score!=0">score=score+1,</if>
+		 </trim>
+		 WHERE id=#{id} and openid=#{openid}
+	</update>
+	
+	<select id="getDish" parameterType="CommentEntity" resultType="CommentEntity">
+		select * from comment_dish where id=#{id}
+	</select>
+	
+	<select id="getListDish" parameterType="CommentEntity" resultType="CommentEntity">
+		select A.*,B.nickName,B.avatarUrl from
+			(select * from comment_dish where kind_id = #{kind_id}) as A,
+			user as B
+		where A.openid=B.openid order by A.score desc
+	</select>
+	
+	<select id="getUserInfoDish" parameterType="java.lang.Integer" resultType="CommentEntity">
+		select A.id,A.content,B.nickName,B.avatarUrl from
+			(select * from comment_dish where id = #{id}) as A,
+			user as B
+		where A.openid=B.openid
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.UserDao">
+
+	<select id="getUser" parameterType="java.lang.String" resultType="UserEntity">
+		select * from user where openid=#{openid}
+	</select>
+	
+	<select id="getUsers" parameterType="java.util.List" resultType="UserEntity">
+		select * from user where openid in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+		  #{item}  
+		 </foreach>
+	</select>
+	
+	<insert id="insert" parameterType="UserEntity">
+		insert into user(
+		openid,gender,nickName,avatarUrl
+		) values(
+		 	 #{openid}, #{gender},#{nickName},#{avatarUrl}
+		 )
+	</insert>
+	
+	
+	<update id="update"  parameterType="UserEntity">
+		 UPDATE user
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="gender!=null">gender=#{gender},</if>
+		  <if test="nickName!=null">nickName=#{nickName},</if>
+		  <if test="avatarUrl!=null">avatarUrl=#{avatarUrl},</if>
+		   <if test="gold!=null">gold=#{gold},</if>
+		    <if test="beauty!=null and beauty>0">beauty=#{beauty},</if>
+		 </trim>
+		 WHERE openid=#{openid}
+	</update>
+	
+	<select id="getUserLikeList"  parameterType="com.game.entity.UserLikeListEntity" resultType="com.game.entity.UserLikeListEntity">
+		select * from user_like_list where openid=#{openid} and comment_type=#{comment_type} and kind_id=#{kind_id}
+	</select>
+	
+	<insert id="insertUserLikeList"  parameterType="com.game.entity.UserLikeListEntity" >
+		insert into user_like_list(
+		openid,comment_type,kind_id,comment_ids
+		) values(
+		 	 #{openid}, #{comment_type},#{kind_id},#{comment_ids}
+		 )
+	</insert>
+	
+	<update id="updateUserLikeList"  parameterType="com.game.entity.UserLikeListEntity" >
+		 UPDATE user_like_list
+		 <trim prefix="set" suffixOverrides=",">
+		  <if test="comment_ids!=null">comment_ids=#{comment_ids},</if>
+		 </trim>
+		 WHERE openid=#{openid} and comment_type=#{comment_type} and kind_id=#{kind_id}
+	</update>
+	
+	
+	
+	
+	
+</mapper>
