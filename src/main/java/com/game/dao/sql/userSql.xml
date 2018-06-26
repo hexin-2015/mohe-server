@@ -56,6 +56,14 @@
 		 WHERE openid=#{openid} and comment_type=#{comment_type} and kind_id=#{kind_id}
 	</update>
 	
+	<insert id="insertUserAdvice"  parameterType="com.game.entity.UserAdviceEntity" >
+		insert into user_advice(
+			openid,content,type,contact
+		) values (
+		 	 #{openid}, #{content},#{type},#{contact}
+		 )
+	</insert>
+	
 	
 	
 	

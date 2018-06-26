@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.druid.util.StringUtils;
 import com.game.common.GoldFactory;
 import com.game.common.KindFactory;
 import com.game.common.WeiXinSession;
@@ -42,7 +43,6 @@ public class CommentController {
 	@Autowired UserService userService;
 	@Autowired CommentService service;
 	@Autowired private KindService kindService;
-	
 	
 	
 	//添加评论
@@ -87,9 +87,10 @@ public class CommentController {
 		if(openid==null){
 			return Message.FailMessage(ReasonCode.ParamPreCheck, "sessionID 错误！").toJsonString();
 		}
-		if(id==null){
+		if(id==null || !StringUtils.isNumber(id) ){
 			return Message.FailMessage(ReasonCode.ParamPreCheck, "id 错误！").toJsonString();
 		}
+		
 		
 		CommentEntity commentEntity = new CommentEntity();
 		commentEntity.setContent(content);

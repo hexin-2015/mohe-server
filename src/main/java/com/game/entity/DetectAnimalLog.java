@@ -44,6 +44,14 @@ public class DetectAnimalLog extends DetectLog {
 	}
 	
 	@Override
+	public KindEntity changeToKindEntity(){
+		KindEntity entity = super.changeToKindEntity();
+		entity.setName(name);
+		entity.setDecectScore(Math.round(score*10000f));
+		return entity;
+	}
+	
+	@Override
 	public String toString() {
 		return "DetectPlantLog [id=" + id + ", openid=" + openid + ", name=" + name + ", scope=" + score + ", String="
 				+ path + ", time=" + time +"]";

@@ -1,12 +1,8 @@
 package com.game.common.module;
 
-import java.sql.Savepoint;
+
 import java.util.HashMap;
-import java.util.HashSet;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
+import com.game.common.util.TimeUtil;
 import com.game.entity.UserEntity;
 import com.game.service.UserService;
 
@@ -21,6 +17,12 @@ public class UserModule {
 	
 	private UserEntity userEntity;
 	
+	private static int lastClearMapTime = 0;
+	/**
+	 * 过期时间3600秒
+	 */
+	private static final int usersExpireTime = 10;
+	
 	public UserModule(String openid,UserService userService){
 		if(UserModule.service == null){
 			UserModule.service = userService;
@@ -29,19 +31,38 @@ public class UserModule {
 		
 	}
 	
-	public UserEntity getUserEntity() {
-		
-		if(userEntity == null){
-			UserEntity userEntity = users.get(openid);
-			if(userEntity == null){
-				UserEntity user = service.getUser(openid);
-				users.put(openid, user);
-				this.userEntity = user;
-			}else{
-				this.userEntity = userEntity;
-			}	
+	/**
+	 * 防止users保留太大没活跃的user信息，所以定时清理users
+	 * 小于1000条自动跳过
+	 */
+	private static void clearUsersCache(){
+		if(users.size()<1000){
+			return;
 		}
-		return userEntity;
+		int now = TimeUtil.getNow();
+		int expireTime = lastClearMapTime + usersExpireTime;
+		//过期
+		if( now > expireTime ){
+			users = new HashMap<String, UserEntity>(1000);
+			lastClearMapTime = now;
+		}
+	}
+	
+	
+	public UserEntity getUserEntity() {
+		//定时清理User缓存
+		clearUsersCache();
+		
+		UserEntity userEntity = users.get(openid);
+		if(userEntity == null){
+			UserEntity user = service.getUser(openid);
+			users.put(openid, user);
+			this.userEntity = user;
+		}else{
+			this.userEntity = userEntity;
+		}
+
+		return this.userEntity;
 	}
 	
 	

@@ -80,7 +80,7 @@ public class RankController {
 		//发送元宝
 		//GoldFactory.doGetRandomGold(openid, GoldReason.BEGIVE, GoldSectionDefined.DEFAULT,successMessage);
 		//
-		GoldFactory.doGetRandomGold(openid, GoldReason.UPDATE_USERINFO, GoldSectionDefined.SECTION_5_15, successMessage);
+		//GoldFactory.doGetRandomGold(openid, GoldReason.UPDATE_USERINFO, GoldSectionDefined.SECTION_5_15, successMessage);
 		return successMessage.toJsonString();
 
 	}

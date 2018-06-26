@@ -1,7 +1,5 @@
 package com.game.common.defined;
 
-import org.springframework.context.support.StaticApplicationContext;
-
 public enum GoldReason {
 	LIKE("like",1),
 	//被点赞
@@ -15,7 +13,10 @@ public enum GoldReason {
 	//更新个人信息
 	UPDATE_USERINFO("update_userinfo",4),
 	//上传颜值排名
-	DORANK("dorank",4),
+	DORANK("dorank",5),
+	//GM发送
+	GM_SEND("gm_send",6),
+	
 	//随机获得,1000以上需要通过概率获得
 	RANDOM("random",1001);
 	

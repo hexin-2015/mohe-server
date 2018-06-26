@@ -2,6 +2,7 @@ package com.game.dao;
 
 import java.util.List;
 
+import com.game.entity.UserAdviceEntity;
 import com.game.entity.UserEntity;
 import com.game.entity.UserLikeListEntity;
 
@@ -21,5 +22,7 @@ public interface UserDao {
 	public int insertUserLikeList(UserLikeListEntity entity);
 	
 	public int updateUserLikeList(UserLikeListEntity entity);
+
+	public int insertUserAdvice(UserAdviceEntity entity);
 	
 }

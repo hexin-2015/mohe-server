@@ -2,6 +2,7 @@ package com.game.service;
 
 import java.util.List;
 
+import com.game.entity.UserAdviceEntity;
 import com.game.entity.UserEntity;
 import com.game.entity.UserLikeListEntity;
 
@@ -20,4 +21,6 @@ public interface UserService {
 	public boolean insertUserLikeList(UserLikeListEntity entity);
 	
 	public boolean updateUserLikeList(UserLikeListEntity entity);
+
+	public boolean insertUserAdvice(UserAdviceEntity entity);
 }
