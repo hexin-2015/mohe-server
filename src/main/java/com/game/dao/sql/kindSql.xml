@@ -9,9 +9,9 @@
             select LAST_INSERT_ID()  
         </selectKey>  
 		insert into kind_plant(
-			id,name,image_min_score,image_num,image_ids
+			id,name,image_min_score,image_num,image_ids,image_scores
 		) values (
-		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids},#{image_scores}
 		 )
 	</insert>
 	
@@ -32,6 +32,10 @@
 		 <trim prefix="set" suffixOverrides=",">
 		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
 		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		  <if test="image_min_score!=null">image_min_score=#{image_min_score},</if>
+		  <if test="image_num!=null">image_num=#{image_num},</if>
+		  <if test="image_ids!=null">image_ids=#{image_ids},</if>
+		  <if test="image_scores!=null">image_scores=#{image_scores},</if>
 		 </trim>
 		 WHERE id=#{id}
 	</update>
@@ -41,9 +45,9 @@
             select LAST_INSERT_ID()  
         </selectKey>  
 		insert into kind_animal(
-			id,name,image_min_score,image_num,image_ids
+			id,name,image_min_score,image_num,image_ids,image_scores
 		) values (
-		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids},#{image_scores}
 		 )
 	</insert>
 	
@@ -64,6 +68,10 @@
 		 <trim prefix="set" suffixOverrides=",">
 		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
 		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		  <if test="image_min_score!=null">image_min_score=#{image_min_score},</if>
+		  <if test="image_num!=null">image_num=#{image_num},</if>
+		  <if test="image_ids!=null">image_ids=#{image_ids},</if>
+		  <if test="image_scores!=null">image_scores=#{image_scores},</if>
 		 </trim>
 		 WHERE id=#{id}
 	</update>
@@ -73,9 +81,9 @@
             select LAST_INSERT_ID()  
         </selectKey>  
 		insert into kind_car(
-			id,name,image_min_score,image_num,image_ids
+			id,name,image_min_score,image_num,image_ids,image_scores
 		) values (
-		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids},#{image_scores}
 		 )
 	</insert>
 	
@@ -96,6 +104,10 @@
 		 <trim prefix="set" suffixOverrides=",">
 		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
 		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		  <if test="image_min_score!=null">image_min_score=#{image_min_score},</if>
+		  <if test="image_num!=null">image_num=#{image_num},</if>
+		  <if test="image_ids!=null">image_ids=#{image_ids},</if>
+		  <if test="image_scores!=null">image_scores=#{image_scores},</if>
 		 </trim>
 		 WHERE id=#{id}
 	</update>
@@ -105,9 +117,9 @@
             select LAST_INSERT_ID()  
         </selectKey>  
 		insert into kind_dish(
-			id,name,image_min_score,image_num,image_ids
+			id,name,image_min_score,image_num,image_ids,image_scores
 		) values (
-		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids}
+		 	 #{id}, #{name},#{image_min_score},#{image_num},#{image_ids},,#{image_scores}
 		 )
 	</insert>
 	
@@ -128,6 +140,10 @@
 		 <trim prefix="set" suffixOverrides=",">
 		  <if test="comment_id!=null">comment_id=#{comment_id},</if>
 		  <if test="comment_score!=null">comment_score=#{comment_score},</if>
+		  <if test="image_min_score!=null">image_min_score=#{image_min_score},</if>
+		  <if test="image_num!=null">image_num=#{image_num},</if>
+		  <if test="image_ids!=null">image_ids=#{image_ids},</if>
+		  <if test="image_scores!=null">image_scores=#{image_scores},</if>
 		 </trim>
 		 WHERE id=#{id}
 	</update>

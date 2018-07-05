@@ -19,8 +19,8 @@ $('#test').click(function(){
 	 var files = $('#imgFile').prop('files');
 	 var data = new FormData();
      data.append('imgFile', files[0]);
-     data.append('imgType','plant');
-     data.append('sessionid','1');
+     data.append('imgType','car');
+     data.append('sessionID','1');
      //data.append('se','car');
      
      console.log(data.get('name'));

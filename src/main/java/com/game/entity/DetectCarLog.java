@@ -48,7 +48,7 @@ public class DetectCarLog extends DetectLog {
 	public KindEntity changeToKindEntity(){
 		KindEntity entity = super.changeToKindEntity();
 		entity.setName(name);
-		entity.setDecectScore(Math.round(score*10000f));
+		entity.setDecectScore(Math.round(score*1000000f));
 		return entity;
 	}
 	

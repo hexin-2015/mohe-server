@@ -21,7 +21,7 @@ public class UserModule {
 	/**
 	 * 过期时间3600秒
 	 */
-	private static final int usersExpireTime = 10;
+	private static final int usersExpireTime = 3600;
 	
 	public UserModule(String openid,UserService userService){
 		if(UserModule.service == null){

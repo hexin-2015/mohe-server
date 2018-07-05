@@ -9,6 +9,7 @@ public class KindEntity {
 	private Integer image_min_score;
 	private Integer image_num;
 	private String image_ids;
+	private String image_scores;
 	private String comment_id;
 	private Integer comment_score;
 	private KindType kindType;
@@ -70,12 +71,20 @@ public class KindEntity {
 	public void setKindType(KindType kindType) {
 		this.kindType = kindType;
 	}
+	public String getImage_scores() {
+		return image_scores;
+	}
+	public void setImage_scores(String image_scores) {
+		this.image_scores = image_scores;
+	}
 	@Override
 	public String toString() {
 		return "KindEntity [id=" + id + ", name=" + name + ", image_min_score=" + image_min_score + ", image_num="
-				+ image_num + ", image_ids=" + image_ids + ", comment_id=" + comment_id + ", comment_score="
-				+ comment_score + ", kindType=" + kindType + ", decectScore=" + decectScore + "]";
+				+ image_num + ", image_ids=" + image_ids + ", image_scores=" + image_scores + ", comment_id="
+				+ comment_id + ", comment_score=" + comment_score + ", kindType=" + kindType + ", decectScore="
+				+ decectScore + "]";
 	}
+	
 	
 
 }

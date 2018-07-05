@@ -19,6 +19,7 @@ import com.game.common.WeiXinSession;
 import com.game.common.defined.GoldReason;
 import com.game.common.defined.GoldSectionDefined;
 import com.game.common.util.MemcachedUtil;
+import com.game.common.util.StringUtil;
 import com.game.entity.UserEntity;
 import com.game.result.Message;
 import com.game.result.bean.ResMessage;

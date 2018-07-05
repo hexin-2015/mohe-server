@@ -127,7 +127,7 @@ public class UploadController {
 			//生成类别
 			ShowKindInfo showKindInfo = new ShowKindInfo();
 			if(KindType.getByName(params.get("imgType")).getIndex() < 5){
-				KindFactory kindFactory = new KindFactory(KindType.getByName(params.get("imgType")),kindService);
+				KindFactory kindFactory = KindFactory.newInstance(KindType.getByName(params.get("imgType")),kindService);
 				kindFactory.setData(detectLog);
 				kindFactory.save();
 				showKindInfo = kindFactory.getShowKindInfo();

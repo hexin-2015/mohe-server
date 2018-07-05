@@ -1,15 +1,9 @@
 package com.game.common;
 
-
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
-
 import com.game.bean.AiResultBean;
 import com.game.common.util.StringUtil;
 import com.game.common.util.TimeUtil;
-import com.game.entity.DetectAnimalLog;
-import com.game.entity.DetectCarLog;
 import com.game.entity.DetectLog;
-import com.game.entity.DetectPlantLog;
 import com.game.service.DetectService;
 
 public class DetectLogFactory {

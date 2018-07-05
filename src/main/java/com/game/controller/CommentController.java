@@ -21,6 +21,7 @@ import com.game.common.defined.CommentType;
 import com.game.common.defined.GoldReason;
 import com.game.common.defined.KindType;
 import com.game.common.module.LikeModule;
+import com.game.common.util.StringUtil;
 import com.game.entity.CommentEntity;
 import com.game.entity.KindEntity;
 import com.game.entity.UserLikeListEntity;
@@ -140,6 +141,7 @@ public class CommentController {
 				row.setIsLiked(1);
 			}	
 			row.setOpenid(null);
+			row.setCreatetime(StringUtil.getTimeFormat(row.getCreatetime()));
 		}
 		
 		ResMessage resMessage = Message.SuccessMessage(dbComment);
@@ -200,7 +202,7 @@ public class CommentController {
 		boolean update = service.update(commentEntity);
 		
 		//判断是否成为最高点赞评论
-		KindFactory kindFactory = new KindFactory(KindType.getByName(imgType), kindService);
+		KindFactory kindFactory = KindFactory.newInstance(KindType.getByName(imgType), kindService);
 		kindFactory.setData(Integer.parseInt(kindid));
 		KindEntity kindEntity = kindFactory.getKindEntity();
 		if(kindEntity.getComment_score() == null || kindEntity.getComment_score() < dbComment.getScore()+1){

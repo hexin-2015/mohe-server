@@ -19,7 +19,7 @@ import com.game.service.UserService;
 public class GoldModule {
 	private String openid;
 	private UserEntity userEntity;
-	//private 
+	//private 限制每日获取最大量 
 	
 	
 	public GoldModule(String openid) {
